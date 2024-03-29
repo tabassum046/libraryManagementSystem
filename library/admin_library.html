@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library Management Admin</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #222;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        canvas {
+            width: 100%;
+            height: auto;
+        }
+
+        .chart-container {
+            width: 45%; /* Adjust as needed */
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Library Management Admin</h1>
+</header>
+
+
+
+<section>
+    <div class="chart-container">
+        <div class="card">
+            <h2>Book Categories Distribution</h2>
+            <canvas id="bookCategoriesChart"></canvas>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <div class="card">
+            <h2>Monthly Book Transactions</h2>
+            <canvas id="monthlyTransactionsChart"></canvas>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <div class="card">
+            <h2>Member Registration vs Active Members</h2>
+            <canvas id="memberRegistrationChart"></canvas>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <div class="card">
+            <h2>Popular Books</h2>
+            <canvas id="popularBooksChart"></canvas>
+        </div>
+    </div>
+</section>
+<div class="text-center mt-3">
+    <a href="admin_new.html" class="btn btn-secondary">Return To The Home Page</a>
+</div>
+<footer>
+    <p>&copy; 2023 Library Management</p>
+</footer>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Dummy Chart Scripts -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Book Categories Distribution Pie Chart
+        var categoriesCtx = document.getElementById('bookCategoriesChart').getContext('2d');
+        var categoriesChart = new Chart(categoriesCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Fiction', 'Non-Fiction', 'Science', 'History'],
+                datasets: [{
+                    data: [30, 20, 15, 10],
+                    backgroundColor: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'],
+                }]
+            }
+        });
+
+        // Monthly Book Transactions Line Chart
+        var transactionsCtx = document.getElementById('monthlyTransactionsChart').getContext('2d');
+        var transactionsChart = new Chart(transactionsCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Transactions',
+                    data: [50, 30, 40, 25, 35, 45],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false,
+                }]
+            }
+        });
+
+        // Member Registration vs Active Members Bar Chart
+        var membersCtx = document.getElementById('memberRegistrationChart').getContext('2d');
+        var membersChart = new Chart(membersCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Registered Members',
+                    data: [100, 120, 90, 110, 130, 100],
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderWidth: 1,
+                }, {
+                    label: 'Active Members',
+                    data: [80, 100, 70, 90, 110, 80],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderWidth: 1,
+                }]
+            }
+        });
+
+        // Popular Books Bar Chart
+        var popularBooksCtx = document.getElementById('popularBooksChart').getContext('2d');
+        var popularBooksChart = new Chart(popularBooksCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Algorithm', 'Poem', 'Novel', 'Mathematices', 'Romantic Book'],
+                datasets: [{
+                    label: 'Number of Borrows',
+                    data: [50, 40, 30, 20, 10],
+                    backgroundColor: ['#ffcc99', '#ff6666', '#c2f0c2', '#9999ff', '#ffb3e6'],
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
